@@ -13,13 +13,16 @@
     <h5>Your name: </h5>
     <p>{{ state.user1.name }}</p>
     <input type="text" v-model="state.user1.name">
+    <h3>Pinia</h3>
+    <p @click="exampleStore.counter++">{{exampleStore.counter}}</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 import {counterType, userType} from '../type/appType'
 import { reactive } from 'vue'
+import { useExampleStore } from '../stores/index'
 
 // state
 const state = reactive({
@@ -42,6 +45,9 @@ const plusCount = () => {
   state.counter1++ 
 
 }
+
+const exampleStore = useExampleStore()
+exampleStore.counter++
 </script>
 
 <style scoped>
